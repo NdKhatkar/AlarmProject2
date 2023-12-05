@@ -1,0 +1,245 @@
+* {
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+body {
+    width: 100%;
+    display: grid;
+    justify-content: center;
+    min-height: 100vh;
+    background-color:#45474B;
+}
+#box {
+    margin-top: 60px;
+    width: 330px;
+    height: auto;
+}
+
+#clock {
+    padding: 5px;
+    width: 330px;
+    height: auto;
+    display: grid;
+    border-radius: 5px;
+    background-color: #F4CE14;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+}
+.container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#analogClock {
+    width: 300px;
+    height: 300px;
+    color: #F4CE14;
+    background-color: #08415c;
+    border: 10px solid #524632;
+    border-radius: 50%;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#analogClock span{
+    font-size: 1.3rem;
+    position: absolute;
+    transform: rotate(calc(30deg * var(--i)));
+    inset: 19px;
+    text-align: center;
+}
+
+#analogClock span b {
+    transform: rotate(calc(-30deg * var(--i)));
+    display: inline-block;
+}
+
+#analogClock::before{
+    content: '';
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: 2;
+}
+
+/* clock hands */
+
+.hand {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hand i{
+    position: absolute;
+    background-color: var(--color);
+    width: 4px;
+    height: var(--height);
+    border-radius: 4px;
+}
+
+
+/* now we are styling the digittal clock */
+
+#digitalClock {
+    margin: 20px 0px;
+    height: 220px;
+    width: 97%;
+    color: rgb(73, 94, 87);
+    background-color: F4CE14 ;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+#alarmClock {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+#alarmClock div{
+    display: flex;
+    
+}
+
+#alarmClock div{
+    display:inline-block;
+    margin: 3px;
+    height: 40px;
+    width: 100px;
+    border: none ;
+    border-radius:3px;
+    background-color: #08415c;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+}
+
+#alarmClock div select {
+
+    outline: none;
+    border: none;
+    background: none;
+    color: #ffffff;
+    height: 100%;
+    width: 100%;
+    font-size: .9rem;
+    font-weight: bolder;
+    letter-spacing: 3px;
+    text-align: center;
+}
+#currentTime {
+    margin: 5px;
+    width: 75%;
+    height: auto;
+    color:#45474B;
+    text-align: center;
+    padding: 3px;
+    font-size: 2rem;
+    font-weight: 900;    
+}
+.alarmTime option{
+    font-size: 1rem;
+}
+
+#setButton {
+    width: 75%;
+    height: 50px;
+    
+    border-radius: 5px;
+}
+
+#digitalClock button{
+    width: 100%;
+    height: 100%;
+    outline: none;
+    border: none;
+    background: none;
+    color: white;
+    font-size: 1.8rem;
+    background-color: #08415c;
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 1);
+    border-radius: 3px;
+    cursor: pointer;
+} 
+#digitalClock button:hover {
+    background-color: rgb(125, 0, 0);
+    color: white;
+    transition: cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+option {
+    background-color: #08415c;
+    color: white;
+    font-size:.8rem ;
+    outline: none;
+}
+option:checked{
+   background-color: #F4CE14;
+   color: black;
+   
+}
+
+
+
+.alarm { 
+    width: 100%;
+    height: 70px;
+    border-radius: 5px;
+    padding: 10px;
+    display: grid;
+    color: #08415c;
+    font-weight: bolder;
+    font-size: 1.5rem;
+   
+    grid-template-columns: 7fr 2fr 2fr;
+    gap: 1em;
+    margin-top: 2px;
+    align-items: center;
+    border-bottom: 1px solid #898f9b;
+    background-color: #F4CE14;
+  }
+  .alarm input[type="checkbox"] {
+    appearance: none;
+    height: 2em;
+    width: 3.75em;
+    background-color: #e2e2ec;
+    border-radius: 1.25em;
+    position: relative;
+    cursor: pointer;
+    outline: none;
+  }
+  .alarm input[type="checkbox"]:before {
+    position: absolute;
+    content: "";
+    background-color: #757683;
+    height: 1.43em;
+    width: 1.43em;
+    border-radius: 50%;
+    top: 0.25em;
+    left: 0.25em;
+  }
+  .alarm input[type="checkbox"]:checked {
+    background-color: #d2e2ff;
+  }
+  .alarm input[type="checkbox"]:checked:before {
+    background-color: #377dff;
+    left: 2em;
+  }
+  .deleteButton {
+    background-color: transparent;
+    font-size: 1.5em;
+    color: #377dff;
+    border: none;
+    cursor: pointer;
+  }
+

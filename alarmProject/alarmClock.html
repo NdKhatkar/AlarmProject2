@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BASIC CLOCK</title>
+
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+/>
+<!-- Google Fonts -->
+<link
+  href="https://fonts.googleapis.com/css2?family=Poppins&family=Roboto+Mono:wght@500&display=swap"
+  rel="stylesheet"
+/>
+
+  <link rel="stylesheet" type="text/css" href="style.css" />
+</head>
+
+<body>
+  <div id="box">
+  <div id="clock">
+  <div class="container">
+    <div id="analogClock">
+
+      <div id="hour-hand" style="--color:#fff    ; --height: 65px" class="hand"><i></i></div>
+      <div id="min-hand" style="--color:#F4CE14 ; --height: 75px" class="hand"><i></i></div>
+      <div id="sec-hand" style="--color:red     ; --height: 90px" class="hand"><i></i></div>
+
+      <span style="--i:1"><b>i</b></span>
+      <span style="--i:2"><b>ii</b></span>
+      <span style="--i:3"><b>iii</b></span>
+      <span style="--i:4"><b>iv</b></span>
+      <span style="--i:5"><b>v</b></span>
+      <span style="--i:6"><b>vi</b></span>
+      <span style="--i:7"><b>vii</b></span>
+      <span style="--i:8"><b>viii</b></span>
+      <span style="--i:9"><b>ix</b></span>
+      <span style="--i:10"><b>v</b></span>
+      <span style="--i:11"><b>xi</b></span>
+      <span style="--i:12"><b>xii</b></span>
+    </div>
+  </div>
+  <div id="digitalClock">
+    <div id="currentTime" > </div>
+    <div id="alarmClock">
+      <div class="alarmTime" >
+        <select>
+          <option value="HOUR" selected hidden>HOUR</option>
+        </select>
+      </div>
+      <div class="alarmTime" >
+        <select>
+          <option value="MINUTE" selected hidden>MINUTE</option>
+        </select>
+      </div>
+      <div class="alarmTime" >
+        <select>
+          <option value="AM/PM" selected hidden>AM/PM</option>
+        </select>
+      </div>
+    </div>
+    <div id="setButton">
+      <button id="set_alarm"><b>ADD ALARM</b></button>
+    </div>
+  </div>
+
+  
+</div>
+<div class="activeAlarms"></div>
+</div>
+</body>
+<script src="script.js"></script>
+
+</html>
