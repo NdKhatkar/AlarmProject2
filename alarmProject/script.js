@@ -1,3 +1,5 @@
+// global variables and connecting to our html objects
+
 let hour = document.getElementById('hour-hand');
 let minutes = document.getElementById('min-hand');
 let second = document.getElementById('sec-hand');
@@ -8,12 +10,14 @@ let alarmSound = new Audio("sound.mp3");
 const activeAlarms = document.querySelector(".activeAlarms");
 let alarmsArray = [];
 
+//initializing three variables for setting inital time
 let initialHour = 0,
   initialMinute = 0,
   alarmIndex = 0;
 
 let alarmTime;
 
+// setting the value of options of select div
 for (let index = 12; index > 0; index--) {
   let option = `<option value = "${index}">${index} </option>`;
   selectdata[0].firstElementChild.insertAdjacentHTML("afterend", option);
@@ -32,7 +36,7 @@ for (let index = 2; index > 0; index--) {
   selectdata[2].firstElementChild.insertAdjacentHTML("afterend", option);
 }
 
-
+//displaying time functions
 function displayTime() {
   let time = new Date();
 
@@ -44,22 +48,23 @@ function displayTime() {
     ampm = "PM"
   }
   hr = hr % 12;
-  
+  //calculating the hands movement
   let hrRotation = 30 * hr + 0.5 * min;
   let minuteRotation = (6 * min);
   let secondRotation = (6 * sec);
 
+  //here rotating the hands
   hour.style.transform = `rotate(${hrRotation}deg)`;
   minutes.style.transform = `rotate(${minuteRotation}deg)`;
   second.style.transform = `rotate(${secondRotation}deg)`;
 
   //Display time
-  digital_clock.innerHTML = time.toLocaleTimeString()+"<br />"+ampm;
+  digital_clock.innerHTML = time.toLocaleTimeString() + "<br />" + ampm;
 
-  
+
   //Alarm
   alarmsArray.forEach((alarm, index) => {
-    alarm.alarmHour%=12;
+    alarm.alarmHour %= 12;
     if (alarm.isActive) {
       if (`${alarm.alarmHour}:${alarm.alarmMinute} ${alarm.alarmAmPm}` === `${hr}:${min} ${ampm}`) {
         alarmSound.play();
@@ -67,29 +72,26 @@ function displayTime() {
       }
     }
   });
-}
-
-setInterval(displayTime);
+} setInterval(displayTime);
 
 
-
+//setup for click on button
 set_alarm.addEventListener('click', () => {
 
-  if(selectdata[0].value==="HOUR"||selectdata[1].value==="MINUTE"||selectdata[2].value==='AM/PM')
-  {
+  if (selectdata[0].value === "HOUR" || selectdata[1].value === "MINUTE" || selectdata[2].value === 'AM/PM') {
     alert("Please enter a valid TIME");
     return;
   }
   alarmIndex += 1;
 
-  
+
 
   //alarmObject
   let alarmObj = {};
   alarmObj.id = `${alarmIndex}_${selectdata[0].value}_${selectdata[1].value} ${selectdata[2].value}`;
   alarmObj.alarmHour = selectdata[0].value;
   alarmObj.alarmMinute = selectdata[1].value;
-  alarmObj.alarmAmPm=selectdata[2].value;
+  alarmObj.alarmAmPm = selectdata[2].value;
   alarmObj.isActive = false;
   alarmsArray.push(alarmObj);
   createAlarm(alarmObj);
@@ -100,6 +102,7 @@ const appendZero = (value) => (value < 10 ? "0" + value : value);
 
 //Search for value in object
 const searchObject = (parameter, value) => {
+  // creating three variables to data of alamobject if it is present in alarmarray
   let alarmObject,
     objIndex,
     exists = false;
@@ -118,14 +121,14 @@ const searchObject = (parameter, value) => {
 
 const createAlarm = (alarmObj) => {
   //Keys from object
-  const { id, alarmHour, alarmMinute,alarmAmPm } = alarmObj;
-  //Alarm div
+  const { id, alarmHour, alarmMinute, alarmAmPm } = alarmObj;
+  //Alarm div inside active alarm div
   let alarmDiv = document.createElement("div");
   alarmDiv.classList.add("alarm");
   alarmDiv.setAttribute("data-id", id);
   alarmDiv.innerHTML = `<span>${alarmHour}: ${alarmMinute} ${alarmAmPm}</span>`;
 
-  //checkbox
+  //checkbox inside alram div which is inside of active alarm div
   let checkbox = document.createElement("input");
   checkbox.setAttribute("type", "checkbox");
   checkbox.addEventListener("click", (e) => {
@@ -136,7 +139,7 @@ const createAlarm = (alarmObj) => {
     }
   });
   alarmDiv.appendChild(checkbox);
-  //Delete button
+  //Delete button inside alram div which is inside of active alarm div
   let deleteButton = document.createElement("button");
   deleteButton.innerHTML = `<i class="fa-solid fa-trash-can"></i>`;
   deleteButton.classList.add("deleteButton");
